@@ -1,16 +1,19 @@
 $(document).ready(function() {
-    $("#btnSubmit").click(function(){
-        alert("button");
-        var bla = $('#txt_name').val();
-        console.log("Hola " + bla)
-        url_get = "https://api.github.com/repos/angular/angular.js/issues/" + bla
+    $("#Suma").click(function(){
+        var A = $('#txt_A').val();
+        var B = $('#txt_B').val();
+        console.log("A " + A)
+        console.log("B " + B)
+        url_get = "http://localhost:5000/api/resta/" + A + "/" + B
         console.log(url_get)
         $.ajax({
+	type: "GET",
         url: url_get
         }).then(function(data) {
-            console.log(data)
-       $('.greeting-id').append(data.id);
-       $('.greeting-content').append(data.id);
+            console.log("data: " + data)
+	    console.log("data.marca " + data.marca)
+	    console.log("data.marca.Resultado " + data.marca.Resultado)
+       $('#resultado_text').text(data.marca.Resultado);
     });
     });
 });
